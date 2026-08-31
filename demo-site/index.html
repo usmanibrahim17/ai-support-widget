@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sweet Crumb Bakery — Fresh Bread &amp; Pastries, Baked Daily</title>
+<meta name="description" content="Sweet Crumb Bakery — a neighborhood bakery serving fresh sourdough, croissants, and pastries every day." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Nunito+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #fbf3e7;
+    --cream-deep: #f3e6d3;
+    --coffee: #4a3126;
+    --coffee-soft: #7a5b48;
+    --terracotta: #c9694f;
+    --terracotta-deep: #a8503a;
+    --blush: #eec4b8;
+    --gold: #d3a24a;
+    --white: #fffdf9;
+    --max-width: 1120px;
+    --radius: 18px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--cream);
+    color: var(--coffee);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, .wordmark {
+    font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    color: var(--coffee);
+    line-height: 1.15;
+  }
+
+  a { color: inherit; }
+
+  img, svg { display: block; max-width: 100%; }
+
+  .container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--terracotta-deep);
+    margin-bottom: 14px;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(251, 243, 231, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(74, 49, 38, 0.08);
+  }
+
+  .nav-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+  }
+
+  .wordmark {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .wordmark-mark {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .wordmark-mark svg { width: 22px; height: 22px; }
+
+  nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+  }
+
+  nav a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--coffee-soft);
+    transition: color 0.15s ease;
+  }
+
+  nav a:hover { color: var(--terracotta-deep); }
+
+  .nav-cta {
+    background: var(--coffee);
+    color: var(--white) !important;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--coffee);
+    margin: 5px 0;
+    border-radius: 2px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(ellipse 900px 500px at 15% 20%, var(--blush) 0%, transparent 60%),
+                radial-gradient(ellipse 700px 500px at 90% 10%, var(--gold) 0%, transparent 55%),
+                linear-gradient(180deg, var(--cream) 0%, var(--cream-deep) 100%);
+    padding: 90px 24px 110px;
+    text-align: center;
+  }
+
+  .hero-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    margin-bottom: 20px;
+  }
+
+  .hero p.tagline {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--coffee-soft);
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 999px;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .btn:hover { transform: translateY(-2px); }
+
+  .btn-primary {
+    background: var(--terracotta);
+    color: var(--white);
+    box-shadow: 0 8px 20px rgba(201, 105, 79, 0.35);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--coffee);
+    border: 2px solid var(--coffee);
+  }
+
+  .hero-divider {
+    width: 100%;
+    height: 60px;
+    display: block;
+    margin-top: -2px;
+  }
+
+  /* ---------- Section shared ---------- */
+  section { padding: 96px 24px; }
+
+  .section-head {
+    text-align: center;
+    max-width: 620px;
+    margin: 0 auto 56px;
+  }
+
+  .section-head h2 {
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+  }
+
+  .section-head p {
+    color: var(--coffee-soft);
+    margin-top: 14px;
+    font-size: 1.05rem;
+  }
+
+  /* ---------- About ---------- */
+  .about {
+    background: var(--white);
+  }
+
+  .about-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .about-copy p { margin-bottom: 18px; color: var(--coffee-soft); font-size: 1.05rem; }
+  .about-copy p:last-child { margin-bottom: 0; }
+
+  .about-visual {
+    position: relative;
+    aspect-ratio: 4 / 3.2;
+    border-radius: var(--radius);
+    background:
+      radial-gradient(circle at 30% 30%, var(--blush) 0%, transparent 45%),
+      linear-gradient(135deg, var(--terracotta) 0%, var(--gold) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .about-visual::before {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border: 2px solid rgba(255,255,255,0.45);
+    border-radius: calc(var(--radius) - 4px);
+  }
+
+  .about-visual .mark {
+    width: 120px;
+    height: 120px;
+  }
+
+  .stat-row {
+    display: flex;
+    gap: 36px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat-row div { text-align: left; }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2rem;
+    color: var(--terracotta-deep);
+    font-weight: 700;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--coffee-soft);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- Menu ---------- */
+  .menu { background: var(--cream); }
+
+  .menu-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .menu-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 30px 26px;
+    box-shadow: 0 10px 30px rgba(74, 49, 38, 0.07);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .menu-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(74, 49, 38, 0.12);
+  }
+
+  .menu-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--cream-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+  }
+
+  .menu-card-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .menu-card-head h3 {
+    font-size: 1.2rem;
+  }
+
+  .menu-price {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    white-space: nowrap;
+    font-size: 1.05rem;
+  }
+
+  .menu-card p {
+    color: var(--coffee-soft);
+    font-size: 0.95rem;
+  }
+
+  .menu-note {
+    text-align: center;
+    margin-top: 44px;
+    color: var(--coffee-soft);
+    font-size: 0.95rem;
+  }
+
+  /* ---------- Hours & Location ---------- */
+  .hours { background: var(--white); }
+
+  .hours-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  .info-card {
+    background: var(--cream);
+    border-radius: var(--radius);
+    padding: 40px;
+  }
+
+  .info-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .hours-list { list-style: none; }
+
+  .hours-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(74, 49, 38, 0.08);
+    font-size: 1rem;
+  }
+  .hours-list li:last-child { border-bottom: none; }
+
+  .hours-list span:first-child { font-weight: 700; }
+  .hours-list span:last-child { color: var(--coffee-soft); }
+
+  .location-lines p {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 18px;
+    color: var(--coffee-soft);
+    font-size: 1rem;
+  }
+  .location-lines p:last-child { margin-bottom: 0; }
+  .location-lines strong { color: var(--coffee); }
+
+  .icon-dot {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: var(--terracotta);
+    color: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  /* ---------- Footer ---------- */
+  footer {
+    background: var(--coffee);
+    color: var(--cream);
+    padding: 64px 24px 32px;
+  }
+
+  .footer-grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(251, 243, 231, 0.15);
+  }
+
+  footer .wordmark { color: var(--cream); }
+
+  footer p.tagline-footer {
+    color: rgba(251, 243, 231, 0.7);
+    margin-top: 14px;
+    max-width: 300px;
+    font-size: 0.95rem;
+  }
+
+  footer h4 {
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 800;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blush);
+    margin-bottom: 18px;
+  }
+
+  footer ul { list-style: none; }
+
+  footer li { margin-bottom: 12px; font-size: 0.95rem; color: rgba(251, 243, 231, 0.85); }
+
+  footer a { text-decoration: none; color: inherit; }
+  footer a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-top: 28px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: rgba(251, 243, 231, 0.55);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { order: -1; max-width: 420px; margin: 0 auto; width: 100%; }
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+    .hours-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  @media (max-width: 640px) {
+    .menu-grid { grid-template-columns: 1fr; }
+    nav ul {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: var(--cream);
+      flex-direction: column;
+      gap: 0;
+      padding: 8px 24px 20px;
+      border-bottom: 1px solid rgba(74, 49, 38, 0.08);
+      display: none;
+    }
+    nav ul.open { display: flex; }
+    nav li { padding: 12px 0; border-bottom: 1px solid rgba(74, 49, 38, 0.06); }
+    .nav-cta { display: none; }
+    .nav-toggle { display: block; }
+    section { padding: 64px 20px; }
+    .hero { padding: 64px 20px 80px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-row">
+    <a href="#top" class="wordmark">
+      <span class="wordmark-mark">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C9 6 7 8.5 7 11.5C7 14.5 9.2 17 12 17C14.8 17 17 14.5 17 11.5C17 8.5 15 6 12 2Z" fill="#fbf3e7"/>
+          <path d="M12 17V21M9 21H15" stroke="#fbf3e7" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+      </span>
+      Sweet Crumb
+    </a>
+    <nav>
+      <ul id="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#hours">Hours &amp; Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#menu" class="nav-cta">See Our Menu</a>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">Neighborhood Bakery · Est. 2016</span>
+      <h1>Sweet Crumb Bakery</h1>
+      <p class="tagline">Warm bread, honest ingredients, and a little something sweet — baked fresh every morning, right down the street.</p>
+      <div class="hero-actions">
+        <a href="#menu" class="btn btn-primary">Explore the Menu</a>
+        <a href="#hours" class="btn btn-secondary">Visit Us Today</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="about-copy">
+        <span class="eyebrow">About Us</span>
+        <h2 style="margin-bottom: 20px;">Baked with care, shared with love</h2>
+        <p>Sweet Crumb Bakery started in 2016 as a tiny kitchen with one oven and a big love of sourdough. Today we're still a small, family-run bakery — every loaf, croissant, and pastry is made from scratch each morning using simple, honest ingredients.</p>
+        <p>No preservatives, no shortcuts — just slow fermentation, real butter, and recipes passed down and perfected over the years. Stop in for a fresh coffee and a warm pastry, or grab a loaf to take home for the week.</p>
+        <div class="stat-row">
+          <div>
+            <div class="stat-num">8+</div>
+            <div class="stat-label">Years Baking</div>
+          </div>
+          <div>
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Scratch-Made</div>
+          </div>
+          <div>
+            <div class="stat-num">6am</div>
+            <div class="stat-label">Daily Bake Start</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-visual">
+        <svg class="mark" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2C9 6 7 8.5 7 11.5C7 14.5 9.2 17 12 17C14.8 17 17 14.5 17 11.5C17 8.5 15 6 12 2Z" fill="#fffdf9" fill-opacity="0.92"/>
+          <path d="M12 17V21M9 21H15" stroke="#fffdf9" stroke-width="1.4" stroke-linecap="round" stroke-opacity="0.92"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section class="menu" id="menu">
+    <div class="section-head">
+      <span class="eyebrow">Our Menu</span>
+      <h2>A Few Favorites</h2>
+      <p>A small taste of what comes out of the oven every day — ask us about seasonal specials too.</p>
+    </div>
+    <div class="menu-grid">
+
+      <div class="menu-card">
+        <div class="menu-icon">🥐</div>
+        <div class="menu-card-head">
+          <h3>Butter Croissant</h3>
+          <span class="menu-price">$3.75</span>
+        </div>
+        <p>Flaky, all-butter layers, baked golden every morning.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-icon">🍞</div>
+        <div class="menu-card-head">
+          <h3>Classic Sourdough</h3>
+          <span class="menu-price">$7.50</span>
+        </div>
+        <p>Naturally leavened with a 48-hour ferment for a deep, tangy crust.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-icon">🍥</div>
+        <div class="menu-card-head">
+          <h3>Cinnamon Sugar Roll</h3>
+          <span class="menu-price">$4.25</span>
+        </div>
+        <p>Soft-baked and swirled with brown sugar and cinnamon, glazed warm.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-icon">🧁</div>
+        <div class="menu-card-head">
+          <h3>Wild Blueberry Muffin</h3>
+          <span class="menu-price">$3.95</span>
+        </div>
+        <p>Studded with wild blueberries and topped with a crumb streusel.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-icon">🍫</div>
+        <div class="menu-card-head">
+          <h3>Chocolate Babka Slice</h3>
+          <span class="menu-price">$5.50</span>
+        </div>
+        <p>Rich chocolate-swirled brioche, sliced thick and lightly toasted.</p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-icon">🥖</div>
+        <div class="menu-card-head">
+          <h3>French Baguette</h3>
+          <span class="menu-price">$4.00</span>
+        </div>
+        <p>Crackling crust, airy crumb — the perfect loaf for the table.</p>
+      </div>
+
+    </div>
+    <p class="menu-note">Prices and availability may vary by day. Ask us about custom cakes and catering orders!</p>
+  </section>
+
+  <!-- Hours & Location -->
+  <section class="hours" id="hours">
+    <div class="section-head">
+      <span class="eyebrow">Visit Us</span>
+      <h2>Hours &amp; Location</h2>
+    </div>
+    <div class="hours-grid">
+      <div class="info-card">
+        <h3>🕐 Hours</h3>
+        <ul class="hours-list">
+          <li><span>Monday – Friday</span><span>7:00 AM – 6:00 PM</span></li>
+          <li><span>Saturday</span><span>8:00 AM – 5:00 PM</span></li>
+          <li><span>Sunday</span><span>8:00 AM – 2:00 PM</span></li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h3>📍 Location</h3>
+        <div class="location-lines">
+          <p><span class="icon-dot">✓</span><span><strong>221 Maple Street</strong><br>Rivertown, CA 94110</span></p>
+          <p><span class="icon-dot">✓</span><span>Street parking available, or the public lot on 3rd Ave.</span></p>
+          <p><span class="icon-dot">✓</span><span>Two blocks from the Rivertown Farmers Market.</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div>
+      <a href="#top" class="wordmark">
+        <span class="wordmark-mark">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2C9 6 7 8.5 7 11.5C7 14.5 9.2 17 12 17C14.8 17 17 14.5 17 11.5C17 8.5 15 6 12 2Z" fill="#fbf3e7"/>
+            <path d="M12 17V21M9 21H15" stroke="#fbf3e7" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        Sweet Crumb
+      </a>
+      <p class="tagline-footer">A small neighborhood bakery serving fresh bread and pastries daily, baked from scratch with honest ingredients.</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <ul>
+        <li>221 Maple Street<br>Rivertown, CA 94110</li>
+        <li><a href="tel:+15550132847">(555) 013-2847</a></li>
+        <li><a href="mailto:hello@sweetcrumbbakery.com">hello@sweetcrumbbakery.com</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Hours</h4>
+      <ul>
+        <li>Mon–Fri: 7:00 AM – 6:00 PM</li>
+        <li>Saturday: 8:00 AM – 5:00 PM</li>
+        <li>Sunday: 8:00 AM – 2:00 PM</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sweet Crumb Bakery. All rights reserved.</span>
+    <span>Made with love, flour, and butter.</span>
+  </div>
+</footer>
+
+<script>
+  var toggle = document.getElementById('nav-toggle');
+  var links = document.getElementById('nav-links');
+  toggle.addEventListener('click', function () {
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      links.classList.remove('open');
+    });
+  });
+</script>
+
+<script src="http://localhost:3000/widget.js" data-business-id="bb33eed0-6fd5-43f8-a459-43b86b7d09c8"></script>
+
+</body>
+</html>

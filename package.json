@@ -1,0 +1,31 @@
+{
+  "name": "nextjs-fastapi",
+  "version": "0.2.0",
+  "private": true,
+  "scripts": {
+    "fastapi-dev": "node -e \"const fs=require('fs'); const {execFileSync}=require('child_process'); const win='venv\\\\Scripts\\\\python.exe'; const unix='venv/bin/python'; const py=fs.existsSync(win)?win:(fs.existsSync(unix)?unix:null); if(!py){console.error('No virtualenv Python found. Expected '+win+' or '+unix); process.exit(1);} execFileSync(py,['-m','pip','install','-r','requirements.txt'],{stdio:'inherit'}); execFileSync(py,['-m','uvicorn','api.index:app','--reload'],{stdio:'inherit'});\"",
+    "next-dev": "next dev",
+    "dev": "concurrently \"npm run next-dev\" \"npm run fastapi-dev\"",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@supabase/ssr": "^0.12.4",
+    "@supabase/supabase-js": "^2.112.2",
+    "@types/node": "22.5.5",
+    "@types/react": "18.3.8",
+    "@types/react-dom": "18.3.0",
+    "autoprefixer": "10.4.20",
+    "concurrently": "^9.0.1",
+    "eslint": "8.41.0",
+    "eslint-config-next": "13.4.4",
+    "lucide-react": "^1.38.0",
+    "next": "^14.2.13",
+    "postcss": "^8.4.47",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tailwindcss": "3.4.12",
+    "typescript": "5.6.2"
+  }
+}
